@@ -20,8 +20,8 @@ function disableOwnerStacks(): void {
       return
     }
 
-    if (!('recentlyCreatedOwnerStacks' in ReactSharedInternals)) {
-      console.error('[react-test-config] Cannot access ReactSharedInternals.recentlyCreatedOwnerStacks');
+    if (!(RECENTLY_CREATED_OWNER_STACKS in ReactSharedInternals)) {
+      console.error(`[react-test-config] Cannot access ReactSharedInternals.${RECENTLY_CREATED_OWNER_STACKS}`);
       return;
     }
 
