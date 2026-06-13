@@ -18,11 +18,9 @@ No test runner is configured yet.
 
 ## Architecture
 
-**Single export:** `configure(options?: ConfigureOptions)` in `src/index.ts`.
+**Single export:** `disableOwnerStacks()` in `src/index.ts`.
 
-**Owner-stacks disabling** works by accessing `React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE.recentlyCreatedOwnerStacks` and either:
-- Using `jest.spyOn` to mock the getter/setter when running under Jest, so the mock is automatically restored after each test file.
-- Falling back to `Object.defineProperty` in non-Jest environments (Vitest, etc.).
+**Owner-stacks disabling** works by accessing `React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE.recentlyCreatedOwnerStacks` and replacing it with a configurable getter/setter via `Object.defineProperty`.
 
 Setting `recentlyCreatedOwnerStacks` to `Infinity` causes React to skip all owner-stack collection logic.
 

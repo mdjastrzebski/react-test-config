@@ -20,14 +20,14 @@ pnpm add --save-dev react-test-config
 
 ## Usage
 
-Call `configure()` once, before your tests run. The right place is a setup file that your test runner loads before the test suite.
+Call `disableOwnerStacks()` once, before your tests run. The right place is a setup file that your test runner loads before the test suite.
 
 To disable owner-stack collection:
 
 ```ts
-import { configure } from 'react-test-config';
+import { disableOwnerStacks } from 'react-test-config';
 
-configure({ enableOwnerStacks: false });
+disableOwnerStacks();
 ```
 
 ### Jest
@@ -62,11 +62,9 @@ This package is particularly useful when testing React Native and React applicat
 
 ## API
 
-### `configure(options?)`
+### `disableOwnerStacks()`
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `enableOwnerStacks` | `boolean` | `true` | Set to `false` to disable React's owner-stack collection during tests. |
+Disables React's owner-stack collection by forcing React's internal `recentlyCreatedOwnerStacks` value to `Infinity`.
 
 ## License
 

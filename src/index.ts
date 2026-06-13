@@ -2,18 +2,8 @@ import React from 'react';
 
 const RECENTLY_CREATED_OWNER_STACKS = 'recentlyCreatedOwnerStacks';
 
-export interface ConfigureOptions {
-  enableOwnerStacks?: boolean;
-}
-
-export function configure({ enableOwnerStacks = true }: ConfigureOptions = {}): void {
-  if (!enableOwnerStacks) {
-    disableOwnerStacks();
-  }
-}
-
 // Prevent React from collecting owner stacks during tests.
-function disableOwnerStacks(): void {
+export function disableOwnerStacks(): void {
   try {
     const ReactSharedInternals = getReactSharedInternals();
     if (!ReactSharedInternals) {
