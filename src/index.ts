@@ -11,11 +11,13 @@ export function disableOwnerStacks(): void {
   try {
     const ReactSharedInternals = getReactSharedInternals();
     if (!ReactSharedInternals) {
-      return
+      return;
     }
 
     if (!(RECENTLY_CREATED_OWNER_STACKS in ReactSharedInternals)) {
-      console.error(`[react-test-config] Cannot access ReactSharedInternals.${RECENTLY_CREATED_OWNER_STACKS}`);
+      console.error(
+        `[react-test-config] Cannot access ReactSharedInternals.${RECENTLY_CREATED_OWNER_STACKS}`,
+      );
       return;
     }
 
@@ -32,16 +34,19 @@ export function disableOwnerStacks(): void {
 
 function getReactSharedInternals(): Record<string, unknown> | undefined {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ReactSharedInternals = (React as any).__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+  const ReactSharedInternals = (React as any)
+    .__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
   if (!ReactSharedInternals) {
-    console.error('[react-test-config] Cannot access ReactSharedInternals using React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE');
+    console.error(
+      '[react-test-config] Cannot access ReactSharedInternals using React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE',
+    );
   }
 
-  return ReactSharedInternals
+  return ReactSharedInternals;
 }
 
 function isEnvTruthy(value: string | undefined): boolean {
-  if (!value || value === '0') { 
+  if (!value || value === '0') {
     return false;
   }
 
