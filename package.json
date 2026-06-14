@@ -1,6 +1,6 @@
 {
   "name": "react-test-config",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Configure React testing environment",
   "keywords": [
     "jest",
