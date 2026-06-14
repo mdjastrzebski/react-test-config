@@ -60,11 +60,21 @@ This package is particularly useful when testing React Native and React applicat
 - [React Testing Library](https://github.com/testing-library/react-testing-library) — testing utilities for React DOM
 - [Reassure](https://github.com/callstack/reassure) — performance regression testing for React and React Native. Disabling owner stacks stabilises measurement results and resolves [bimodal test result distributions](https://github.com/callstack/reassure/issues/585) caused by React's stack collection overhead
 
+## Configuration
+
+### `RTC_SKIP_DISABLE_OWNER_STACKS`
+
+Set this environment variable to any truthy value to make `disableOwnerStacks()` a no-op. This is useful when you want to temporarily re-enable owner stacks — for example, to debug a component hierarchy without changing your setup file.
+
+```sh
+RTC_SKIP_DISABLE_OWNER_STACKS=1 npx jest
+```
+
 ## API
 
 ### `disableOwnerStacks()`
 
-Disables React's owner-stack collection by forcing React's internal `recentlyCreatedOwnerStacks` value to `Infinity`.
+Disables React's owner-stack collection by forcing React's internal `recentlyCreatedOwnerStacks` value to `Infinity`. Respects the [`RTC_SKIP_DISABLE_OWNER_STACKS`](#rtc_skip_disable_owner_stacks) environment variable.
 
 ## License
 

@@ -4,6 +4,10 @@ const RECENTLY_CREATED_OWNER_STACKS = 'recentlyCreatedOwnerStacks';
 
 // Prevent React from collecting owner stacks during tests.
 export function disableOwnerStacks(): void {
+  if (isEnvTruthy(process.env.RTC_SKIP_DISABLE_OWNER_STACKS)) {
+    return;
+  }
+
   try {
     const ReactSharedInternals = getReactSharedInternals();
     if (!ReactSharedInternals) {
@@ -34,4 +38,12 @@ function getReactSharedInternals(): Record<string, unknown> | undefined {
   }
 
   return ReactSharedInternals
+}
+
+function isEnvTruthy(value: string | undefined): boolean {
+  if (!value || value === '0') { 
+    return false;
+  }
+
+  return value.toLowerCase() !== 'false';
 }
