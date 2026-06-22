@@ -16,7 +16,7 @@ yarn add --dev react-test-config
 pnpm add --save-dev react-test-config
 ```
 
-**Peer dependency:** React 19 (`react@^19.0.0`).
+**Peer dependency:** React (`react@*`).
 
 ## Usage
 
@@ -74,7 +74,7 @@ RTC_SKIP_DISABLE_OWNER_STACKS=1 npx jest
 
 ### `disableOwnerStacks()`
 
-Disables React's owner-stack collection by forcing React's internal `recentlyCreatedOwnerStacks` value to `Infinity`. Respects the [`RTC_SKIP_DISABLE_OWNER_STACKS`](#rtc_skip_disable_owner_stacks) environment variable.
+Disables React's owner-stack collection by forcing React's internal `recentlyCreatedOwnerStacks` value to `Infinity`. This only runs on React 19.1 and newer, and respects the [`RTC_SKIP_DISABLE_OWNER_STACKS`](#rtc_skip_disable_owner_stacks) environment variable.
 
 ## License
 
