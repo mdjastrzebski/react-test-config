@@ -37,6 +37,7 @@ jobs:
       - run: pnpm add --save-dev react@${{ matrix.react }} @types/react@${{ matrix.types }}
 
       - run: pnpm build
+      - run: pnpm test
 
   checks:
     runs-on: ubuntu-latest
