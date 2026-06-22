@@ -7,7 +7,39 @@ on:
     branches: [main]
 
 jobs:
-  validate:
+  react:
+    name: React ${{ matrix.react }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - react: 18.x
+            types: 18.x
+          - react: 19.0.x
+            types: 19.x
+          - react: 19.1.x
+            types: 19.x
+          - react: 19.2.x
+            types: 19.x
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm add --save-dev react@${{ matrix.react }} @types/react@${{ matrix.types }}
+
+      - run: pnpm build
+      - run: pnpm test
+
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,6 +53,5 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
       - run: pnpm typecheck
-      - run: pnpm format --check
+      - run: pnpm format:check
