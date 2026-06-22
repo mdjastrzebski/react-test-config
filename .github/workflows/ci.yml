@@ -34,7 +34,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm add --save-dev react@${{ matrix.react }} @types/react@${{ matrix.types }} --no-frozen-lockfile
+      - run: pnpm add --save-dev react@${{ matrix.react }} @types/react@${{ matrix.types }}
 
       - run: pnpm build
 
