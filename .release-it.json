@@ -1,8 +1,8 @@
 {
   "$schema": "https://unpkg.com/release-it/schema/release-it.json",
   "hooks": {
-    "before:init": ["pnpm typecheck"],
-    "after:bump": ["pnpm build", "pnpm format"],
+    "before:init": ["node --run typecheck", "node --run format:check", "node --run test"],
+    "after:bump": ["node --run build", "node --run format"],
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
   },
   "git": {
