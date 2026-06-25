@@ -35,7 +35,8 @@
     "format:check": "oxfmt --check .",
     "test": "jest --watchman=false",
     "typecheck": "tsc --noEmit",
-    "validate:fix": "pnpm typecheck && pnpm format",
+    "validate": "node --run test && node --run typecheck && node --run format:check",
+    "validate:fix": "node --run format && node --run typecheck && node --run test",
     "release": "release-it"
   },
   "devDependencies": {
