@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0](https://github.com/mdjastrzebski/react-test-config/compare/v0.3.0...v1.0.0) (2026-06-25)
+
 ## [0.3.0](https://github.com/mdjastrzebski/react-test-config/compare/v0.2.0...v0.3.0) (2026-06-14)
 
 ### ✨ Features
